@@ -1,8 +1,3 @@
-/**
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import {
@@ -10,7 +5,6 @@ import {
 } from 'react-navigation';
 import NavigatorUtils from '../navigator/NavigatorUtils';
 
-type Props = {};
 import PopularPage from './PopularPage';
 import TrendingPage from './TrendingPage';
 import FavoritePage from './FavoritePage';
@@ -18,7 +12,7 @@ import MyPage from './MyPage';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default class HomePage extends Component<Props> {
+export default class HomePage extends Component {
   _tabNavigator() {
     return createBottomTabNavigator({
       PopularPage: {

@@ -5,7 +5,7 @@ import {
 } from 'react-navigation';
 import NavigatorUtils from '../navigator/NavigatorUtils';
 
-class PopularTab extends Component<Props> {
+class PopularTab extends Component{
   render() {
     return (
       <View>
