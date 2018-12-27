@@ -14,6 +14,8 @@ import PopularPage from './PopularPage';
 import TrendingPage from './TrendingPage';
 import FavoritePage from './FavoritePage';
 import MyPage from './MyPage';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default class HomePage extends Component<Props> {
   _tabNavigator() {
@@ -22,24 +24,60 @@ export default class HomePage extends Component<Props> {
         screen: PopularPage,
         navigationOptions: {
           tabBarLabel: '最热',
+          tabBarIcon({tintColor, focused}) {
+            return (
+              <MaterialCommunityIcons
+                name={'fire'}
+                size={26}
+                style={{color: tintColor}}
+              />
+            );
+          }
         },
       },
       TrendingPage: {
         screen: TrendingPage,
         navigationOptions: {
           tabBarLabel: '趋势',
+          tabBarIcon({tintColor, focused}) {
+            return (
+              <MaterialIcons
+                name={'show-chart'}
+                size={26}
+                style={{color: tintColor}}
+              />
+            );
+          }
         },
       },
       FavoritePage: {
         screen: FavoritePage,
         navigationOptions: {
           tabBarLabel: '收藏',
+          tabBarIcon({tintColor, focused}) {
+            return (
+              <MaterialIcons
+                name={'star-border'}
+                size={26}
+                style={{color: tintColor}}
+              />
+            );
+          },
         },
       },
       MyPage: {
         screen: MyPage,
         navigationOptions: {
           tabBarLabel: '我的',
+          tabBarIcon({tintColor, focused}) {
+            return (
+              <MaterialIcons
+                name={'person-outline'}
+                size={26}
+                style={{color: tintColor}}
+              />
+            );
+          }
         },
       },
     });
