@@ -8,6 +8,7 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import {
   createBottomTabNavigator,
 } from 'react-navigation';
+import NavigatorUtils from '../navigator/NavigatorUtils';
 
 type Props = {};
 import PopularPage from './PopularPage';
@@ -84,6 +85,7 @@ export default class HomePage extends Component<Props> {
   }
 
   render() {
+    NavigatorUtils.navigation = this.props.navigation;
     const Tabs = this._tabNavigator();
     return <Tabs></Tabs>;
   }

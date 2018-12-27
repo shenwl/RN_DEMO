@@ -3,12 +3,16 @@ import {StyleSheet, Text, View} from 'react-native';
 import {
   createMaterialTopTabNavigator,
 } from 'react-navigation';
+import NavigatorUtils from '../navigator/NavigatorUtils';
 
 class PopularTab extends Component<Props> {
   render() {
     return (
       <View>
-        <Text>PopularTab1</Text>
+        <Text>{this.props.tabLabel}</Text>
+        <Text onPress={() => {
+          NavigatorUtils.goPage({}, 'DetailPage');
+        }}>跳转到详情页</Text>
       </View>
     );
   }
