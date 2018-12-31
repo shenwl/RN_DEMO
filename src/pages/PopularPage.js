@@ -5,7 +5,7 @@ import {
 } from 'react-navigation';
 import NavigatorUtils from '../navigator/NavigatorUtils';
 
-class PopularTab extends Component{
+class PopularTab extends Component {
   render() {
     return (
       <View>
@@ -21,7 +21,7 @@ class PopularTab extends Component{
                 tintColor: 'blue',
                 updateTime: new Date().getTime()
               }
-            })
+            });
           }}
         ></Button>
       </View>
@@ -31,28 +31,29 @@ class PopularTab extends Component{
 
 
 export default class PopularPage extends Component {
-  _topNavigator() {
-    return createMaterialTopTabNavigator({
-      PopularTab1: {
+  constructor(props) {
+    super(props);
+    this.tabNames = ['Python', 'JavaScript', 'React', 'Go', 'PHP'];
+  }
+
+  _generateTabs() {
+    const tabs = {};
+    this.tabNames.forEach((item, index) => {
+      tabs[`tab${index}`] = {
         screen: PopularTab,
         navigationOptions: {
-          title: 'Tab1'
+          title: item,
         }
-      },
-      PopularTab2: {
-        screen: PopularTab,
-        navigationOptions: {
-          title: 'Tab2'
-        }
-      },
+      }
     });
+    return createMaterialTopTabNavigator(tabs);
   }
 
   render() {
-    const TopNavigator = this._topNavigator();
+    const TopNavigator = this._generateTabs();
     return (
       <View style={styles.container}>
-        <TopNavigator />
+        <TopNavigator style={styles.toptab}/>
       </View>
     );
   }
