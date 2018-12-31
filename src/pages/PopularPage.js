@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
 import {
   createMaterialTopTabNavigator,
 } from 'react-navigation';
@@ -13,6 +13,17 @@ class PopularTab extends Component{
         <Text onPress={() => {
           NavigatorUtils.goPage({}, 'DetailPage');
         }}>跳转到详情页</Text>
+        <Button
+          title="改变主题颜色"
+          onPress={() => {
+            this.props.navigation.setParams({
+              theme: {
+                tintColor: 'blue',
+                updateTime: new Date().getTime()
+              }
+            })
+          }}
+        ></Button>
       </View>
     );
   }
