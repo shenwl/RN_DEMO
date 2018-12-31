@@ -44,16 +44,27 @@ export default class PopularPage extends Component {
         navigationOptions: {
           title: item,
         }
+      };
+    });
+    return createMaterialTopTabNavigator(tabs, {
+      tabBarOptions: {
+        upperCaseLabel: false,
+        scrollEnabled: true,
+        style: {
+          backgroundColor: '#678',
+        },
+        tabStyle: styles.tabStyle,
+        indicatorStyle: styles.indicatorStyle, // 标签指示器样式
+        labelStyle: styles.labelStyle,  // 文字样式
       }
     });
-    return createMaterialTopTabNavigator(tabs);
   }
 
   render() {
     const TopNavigator = this._generateTabs();
     return (
       <View style={styles.container}>
-        <TopNavigator style={styles.toptab}/>
+        <TopNavigator/>
       </View>
     );
   }
@@ -63,5 +74,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 30,
+  },
+  tabStyle: {
+  },
+  indicatorStyle: {
+    height: 2,
+    backgroundColor: '#fff',
+  },
+  labelStyle: {
+    fontSize: 13,
   },
 });
