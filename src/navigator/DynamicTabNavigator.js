@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {createBottomTabNavigator} from "react-navigation";
+
 import NavigatorUtils from "./NavigatorUtils";
 
 import PopularPage from "../pages/PopularPage";
@@ -73,10 +74,10 @@ const TABS = {
   },
 };
 
-export default class DynamicNavigator extends Component {
+export default class DynamicTabNavigator extends Component {
   _tabNavigator() {
     const {PopularPage, TrendingPage, FavoritePage, MyPage} = TABS;
-    const tabs = {PopularPage, TrendingPage, FavoritePage}; // 根据需要配置显示的Tab
+    const tabs = {PopularPage, TrendingPage, FavoritePage, MyPage}; // 根据需要配置显示的Tab
     return createBottomTabNavigator(tabs);
   }
 
