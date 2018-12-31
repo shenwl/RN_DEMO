@@ -40,7 +40,7 @@ export default class PopularPage extends Component {
     const tabs = {};
     this.tabNames.forEach((item, index) => {
       tabs[`tab${index}`] = {
-        screen: PopularTab,
+        screen: props => <PopularTab {...props} tabLabel={item} />,
         navigationOptions: {
           title: item,
         }
