@@ -10,20 +10,6 @@ class PopularTab extends Component {
     return (
       <View>
         <Text>{this.props.tabLabel}</Text>
-        <Text onPress={() => {
-          NavigatorUtils.goPage({}, 'DetailPage');
-        }}>跳转到详情页</Text>
-        <Button
-          title="改变主题颜色"
-          onPress={() => {
-            this.props.navigation.setParams({
-              theme: {
-                tintColor: 'blue',
-                updateTime: new Date().getTime()
-              }
-            });
-          }}
-        ></Button>
       </View>
     );
   }
@@ -65,6 +51,17 @@ export default class PopularPage extends Component {
     return (
       <View style={styles.container}>
         <TopNavigator/>
+        <Button
+          title="改变主题颜色"
+          onPress={() => {
+            this.props.navigation.setParams({
+              theme: {
+                tintColor: 'blue',
+                updateTime: new Date().getTime()
+              }
+            })
+          }}
+        ></Button>
       </View>
     );
   }

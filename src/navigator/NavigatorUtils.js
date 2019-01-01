@@ -9,6 +9,7 @@ export default class NavigatorUtils {
    * @param page: 跳转的页名
    */
   static goPage(params, page) {
+    // 在HomePage设置NavigatorUtils.navigation
     const navigation = NavigatorUtils.navigation;
     if(!navigation) {
       console.warn('NavigatorUtils.navigation cant be null');
