@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {createBottomTabNavigator} from "react-navigation";
 import {BottomTabBar} from 'react-navigation-tabs';
+import {connect} from 'react-redux';
 
 import NavigatorUtils from "./NavigatorUtils";
-
 import PopularPage from "../pages/PopularPage";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import TrendingPage from "../pages/TrendingPage";
@@ -83,11 +83,12 @@ class TabBarComponent extends Component {
       updateTime: new Date().getTime()
     };
   }
+
   render() {
     const {routes, index} = this.props.navigation.state;
-    if(routes[index].params) {
+    if (routes[index].params) {
       const {theme} = routes[index].params;
-      if(theme && theme.updateTime > this.theme.updateTime) {
+      if (theme && theme.updateTime > this.theme.updateTime) {
         this.theme = theme;
       }
     }
@@ -96,24 +97,34 @@ class TabBarComponent extends Component {
         {...this.props}
         activeTintColor={this.theme.tintColor || this.props.activeTintColor}
       ></BottomTabBar>
-    )
+    );
   }
 }
 
-export default class DynamicTabNavigator extends Component {
+class DynamicTabNavigator extends Component {
   _tabNavigator() {
     const {PopularPage, TrendingPage, FavoritePage, MyPage} = TABS;
     const tabs = {PopularPage, TrendingPage, FavoritePage, MyPage}; // 根据需要配置显示的Tab
     return createBottomTabNavigator(tabs, {
-      tabBarComponent: TabBarComponent,
+      tabBarComponent: props => {
+        return <TabBarComponent theme={this.props.theme} {...props} />
+      },
     });
   }
 
   render() {
     NavigatorUtils.navigation = this.props.navigation;
     const Tabs = this._tabNavigator();
-    return <Tabs></Tabs>;
+    return <Tabs />;
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    theme: state.theme.theme,
+  };
+};
+
+export default connect(mapStateToProps)(DynamicTabNavigator)
 
 
