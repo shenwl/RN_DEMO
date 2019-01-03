@@ -6,7 +6,7 @@ export default class WelcomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: 2
+      time: 1
     };
   }
 
@@ -15,15 +15,7 @@ export default class WelcomePage extends Component {
       NavigatorUtils.resetToHomePage({
         navigation: this.props.navigation,
       });
-    }, 2000);
-    this.timeInterval = setInterval(() => {
-      this.setState(() => {
-        let time = this.state.time;
-        return {
-          time: time - 1
-        };
-      });
-    }, 1000);
+    }, 1);
   }
 
   componentWillUnmount() {
