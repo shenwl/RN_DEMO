@@ -88,11 +88,14 @@ class TabBarComponent extends Component {
 
 class DynamicTabNavigator extends Component {
   _tabNavigator() {
+    if (this.Tabs) {
+      return this.Tabs;
+    }
     const {PopularPage, TrendingPage, FavoritePage, MyPage} = TABS;
     const tabs = {PopularPage, TrendingPage, FavoritePage, MyPage}; // 根据需要配置显示的Tab
-    return createBottomTabNavigator(tabs, {
+    return this.Tabs = createBottomTabNavigator(tabs, {
       tabBarComponent: props => {
-        return <TabBarComponent theme={this.props.theme} {...props} />
+        return <TabBarComponent theme={this.props.theme} {...props} />;
       },
     });
   }
@@ -100,7 +103,7 @@ class DynamicTabNavigator extends Component {
   render() {
     NavigatorUtils.navigation = this.props.navigation;
     const Tabs = this._tabNavigator();
-    return <Tabs />;
+    return <Tabs/>;
   }
 }
 
@@ -110,6 +113,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(DynamicTabNavigator)
+export default connect(mapStateToProps)(DynamicTabNavigator);
 
 
