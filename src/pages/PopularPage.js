@@ -3,6 +3,8 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import {
   createMaterialTopTabNavigator,
 } from 'react-navigation';
+import {connect} from 'react-redux';
+import actions from '../actions';
 import NavigatorUtils from '../navigator/NavigatorUtils';
 
 class PopularTab extends Component {
@@ -19,7 +21,7 @@ class PopularTab extends Component {
 }
 
 
-export default class PopularPage extends Component {
+class PopularPage extends Component {
   constructor(props) {
     super(props);
     this.tabNames = ['Python', 'JavaScript', 'React', 'Go', 'PHP'];
@@ -57,18 +59,27 @@ export default class PopularPage extends Component {
         <Button
           title="改变主题颜色"
           onPress={() => {
-            this.props.navigation.setParams({
-              theme: {
-                tintColor: 'blue',
-                updateTime: new Date().getTime()
-              }
-            })
+            this.props.onThemeChange('blue');
           }}
         ></Button>
       </View>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    theme: state.theme.theme,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onThemeChange: theme => dispatch(actions.onThemeChange(theme)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PopularPage);
 
 const styles = StyleSheet.create({
   container: {
