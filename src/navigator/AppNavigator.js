@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import WelcomePage from '../pages/WelcomePage';
 import HomePage from '../pages/HomePage';
 import DetailPage from '../pages/DetailPage';
+import FetchDemoPage from '../pages/FetchDemoPage';
 
 // 设置根路由
 export const rootCom = 'Init';
@@ -29,6 +30,12 @@ const MainNavigator = createStackNavigator({
   },
   DetailPage: {
     screen: DetailPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  FetchDemoPage: {
+    screen: FetchDemoPage,
     navigationOptions: {
       header: null,
     }

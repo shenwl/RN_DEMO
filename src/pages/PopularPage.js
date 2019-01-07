@@ -15,6 +15,9 @@ class PopularTab extends Component {
         <Text onPress={() => {
           NavigatorUtils.goPage({}, 'DetailPage');
         }}>跳转到详情页</Text>
+        <Text onPress={() => {
+          NavigatorUtils.goPage({}, 'FetchDemoPage');
+        }}>跳转到fetch页</Text>
       </View>
     );
   }
