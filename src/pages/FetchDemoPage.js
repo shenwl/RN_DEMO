@@ -6,14 +6,24 @@ export default class FetchDemoPage extends Component {
     super(props);
     this.state = {
       showText: '',
-    }
+    };
   }
+
   loadData() {
-    //  https://api.github.com/search/repositories?q=react
     let url = `https://api.github.com/search/repositories?q=${this.searchKey}`;
     fetch(url)
-      .then(res => res.text())
-      .then(res => this.setState({showText: res}));
+      .then(response => {
+        if (response.ok) {
+          return response.text();
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then(responseText => this.setState({showText: responseText}))
+      .catch(error => {
+        this.setState({
+          showText: error.toString(),
+        })
+      });
   }
 
   render() {
