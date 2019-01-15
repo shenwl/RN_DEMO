@@ -52,3 +52,28 @@ const getData = async () => {
     error && console.error(error.toString());
   }
 };
+
+
+/**
+ * 删除数据
+ * @returns {Promise<void>}
+ */
+const removeData = async () => {
+  // 用法1
+  AsyncStorage.removeItem(KEY, error => {
+    error && console.error(error.toString());
+  });
+
+  // 用法2
+  AsyncStorage.removeItem(KEY)
+    .catch(error => {
+      error && console.error(error.toString());
+    });
+
+  // 用法3
+  try {
+    await AsyncStorage.removeItem(KEY);
+  } catch (error) {
+    error && console.error(error.toString());
+  }
+};
