@@ -8,6 +8,7 @@ import WelcomePage from '../pages/WelcomePage';
 import HomePage from '../pages/HomePage';
 import DetailPage from '../pages/DetailPage';
 import FetchDemoPage from '../pages/FetchDemoPage';
+import AsyncStorageDemoPage from '../pages/AsyncStorageDemoPage';
 
 // 设置根路由
 export const rootCom = 'Init';
@@ -36,6 +37,12 @@ const MainNavigator = createStackNavigator({
   },
   FetchDemoPage: {
     screen: FetchDemoPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  AsyncStorageDemoPage: {
+    screen: AsyncStorageDemoPage,
     navigationOptions: {
       header: null,
     }
