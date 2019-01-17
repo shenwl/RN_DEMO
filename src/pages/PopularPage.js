@@ -21,6 +21,9 @@ class PopularTab extends Component {
         <Text onPress={() => {
           NavigatorUtils.goPage({}, 'AsyncStorageDemoPage');
         }}>跳转到AsyncStorageDemo页</Text>
+        <Text onPress={() => {
+          NavigatorUtils.goPage({}, 'DataStoreDemoPage');
+        }}>离线缓存框架测试页</Text>
       </View>
     );
   }
