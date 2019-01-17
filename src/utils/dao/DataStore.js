@@ -10,12 +10,12 @@ export default class DataStore {
   }
 
   _wrapData(data) {
-    return {data, timestamp: new Date().getTime()};
+    return {data: data, timestamp: new Date().getTime()};
   }
 
   saveData(url, data, callback) {
     if (!data || !url) return;
-    AsyncStorage.setItem(url, this._wrapData(JSON.stringify(data)), callback);
+    AsyncStorage.setItem(url, JSON.stringify(this._wrapData(data)), callback);
   }
 
   fetchData(url) {
